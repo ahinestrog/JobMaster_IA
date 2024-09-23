@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobMaster_IA</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        header {
+            background-color: #dce2e7;
+            padding: 10px;
+            z-index: 1000; /* Asegura que el header esté por encima del mapa */
+            position: relative;
+        }
+
+        #hero {
+            padding: 0;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #5b718b;
+            position: relative;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body></body>
+    <header>
+        <div class="contenedor">
+            <p class="logo">JobMaster + IA</p>
+            <nav>
+                <a href="http://127.0.0.1:8000/">Home</a>
+            </nav>
+
+            <div class="auth-buttons">
+                <button onclick="window.location.href='http://127.0.0.1:8000/login/'">Iniciar Sesión</button>
+                <button onclick="window.location.href='http://127.0.0.1:8000/register'">Registrarse</button>
+                <a href="{% url 'logout' %}"><button type="button">Cerrar Sesión</button></a>
+            </div>
+        </div>
+    </header>
+
+    <footer>
+        <p>© 2024 JobMaster_IA. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

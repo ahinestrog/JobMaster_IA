@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import CVGenerator.views as VIEWS
+from CVGenerator import views as VIEWS
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', VIEWS.home, name='home'),
+    path('register/', VIEWS.register, name='register'),
+    path('login/', VIEWS.loginPage, name='login'),
+    path('logout/', VIEWS.logoutUser, name='logout'),
 ]
