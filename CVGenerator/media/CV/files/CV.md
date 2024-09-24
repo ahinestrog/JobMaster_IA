@@ -1,28 +1,19 @@
 # Hoja de Vida
 
 ## Información Personal
-- **Nombre:** Jose
+- **Nombre:** Alejandro
 - **Teléfono:** 12345678
-- **Correo Electrónico:** jose@eafit.edu.co
-
-## Experiencia Laboral
-- **Dark Souls Expert**
-  - He completado el juego Dark Souls en múltiples ocasiones, demostrando habilidades estratégicas y de resolución de problemas.
+- **Correo Electrónico:** alejo@gmail.com
 
 ## Educación
-- **Universidad EAFIT**
-  - Pregrado en curso
+- **Universidad:** Eafit
+- **Carrera:** Pregrado
 
 ## Idiomas
-- **Inglés:** Avanzado
-- **Español:** Nativo
+- Español
+- Inglés
 
-## Habilidades
-- Estrategia en videojuegos
-- Resolución de problemas
-- Trabajo en equipo
+## Experiencia Laboral
+- **Experiencia:** Me pase jugando dark souls
 
-## Referencias
-- Disponibles a solicitud
-
-¡Estoy emocionado por la oportunidad de demostrar mis habilidades y contribuir al éxito de su empresa!
+¡Gracias por considerar mi hoja de vida! Estoy emocionado por la oportunidad de trabajar en un puesto importante y demostrar mis habilidades y conocimientos. ¡Espero tener la oportunidad de hablar más sobre mi experiencia y cómo puedo contribuir al equipo!

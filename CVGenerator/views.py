@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import FileResponse, Http404
 from django.contrib.auth import authenticate, login, logout
 from .models import CV
 from .forms import CreateUserForm, CVForm
@@ -6,14 +7,15 @@ from django.contrib import messages
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
+import pypandoc
 
 # Create your views here.
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
-    _ = load_dotenv('api_keys.env')
+    _ = load_dotenv('api_keys_2.env')
     client = OpenAI(
     # This is the default and can be omitted
-    api_key=os.environ.get('api_key_3_2'),
+    api_key=os.environ.get('openai_apikey'),
     )
     messages = [{"role": "user", "content": prompt}]
     response = client.chat.completions.create(
@@ -29,7 +31,23 @@ def create_file(form):
 
     with open('CVGenerator/media/CV/files/CV.md', 'w') as file:
         file.write(response)
+        
+    try:
+        pypandoc.convert_file('CVGenerator/media/CV/files/CV.md', 'docx', outputfile='CVGenerator/media/CV/files/CV.docx')
+    except:
+        print('Error al convertir el archivo')
 
+def download_docx(request):
+    docx_file = 'CVGenerator/media/CV/files/CV.docx'
+
+    # Verificar si el archivo existe
+    if os.path.exists(docx_file):
+        # Devuelve el archivo
+        response = FileResponse(open(docx_file, 'rb'))
+        return response
+    else:
+        # Si no existe, devuelve un error 404
+        raise Http404("El archivo solicitado no existe")
 
 def home(request):
     if request.method == 'POST':
@@ -37,7 +55,6 @@ def home(request):
         if form.is_valid():
             form.save()
             create_file(form)
-            #return redirect('http://127.0.0.1:8000/dispFile/')
         else:
             print(form.errors)
     return render(request, 'home.html')
