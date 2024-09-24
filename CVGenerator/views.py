@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import CV
-from .forms import CreateUserForm
+from .forms import CreateUserForm, CVForm
 from django.contrib import messages
 
 # Create your views here.
 
 def home(request):
+    if request.method == 'POST':
+        form = CVForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('http://127.0.0.1:8000/dispFile/')
     return render(request, 'home.html')
 
 def register(request):

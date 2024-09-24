@@ -7,10 +7,10 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">
       {% load static %}
-      <img src="{% static 'images/home.png' %}" alt="" width="30"
+      <img src="{% static 'images/home.png' %}" alt="" width="70"
 height="24"
           class="d-inline-block align-text-top" />
-      Movies
+      JobMaster + IA
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,19 +18,13 @@ height="24"
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'news' %}">News</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'statistics' %}">Statistics</a>
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'recom' %}">Recommendations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <a class="nav-link" href="{% url 'logout' %}">Log out</a>
         </li>
       </ul>
     </div>
@@ -46,7 +40,7 @@ height="24"
   <div class="container">
     <div class="row">
       <div class="text-center p-4">
-        <h4>© 2024 Copyright - Paola Vallejo & Juan David Martínez</h4>
+        <h5>© 2024 Copyright - Nicolas Ruiz, Alejandro Hinestroza y Jose Daniel</h5>
       </div>
     </div>
   </div>
