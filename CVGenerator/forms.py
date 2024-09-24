@@ -7,8 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class CVForm(ModelForm):
     class Meta:
         model = CV
-        fields = '__all__'
-        exclude = ['author']
+        fields = ['name', 'email', 'phone', 'address', 'education', 'experience', 'languages', 'prompt']
 
 class CreateUserForm(UserCreationForm):
     class Meta:
