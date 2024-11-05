@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Analista de Recursos Humanos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/analista-recursosHumanos.png' %}" alt="Analista de Recursos Humanos" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Analista de Recursos Humanos</h1>
+                    <p class="card-text">
+                        Profesional enfocado en la gestión y desarrollo del talento humano, con experiencia en selección de personal, evaluaciones de desempeño y gestión de beneficios.
+                    </p>
+                    <p class="text-muted">Ubicación: Bogotá</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Selección de personal, Evaluaciones, Gestión del talento</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

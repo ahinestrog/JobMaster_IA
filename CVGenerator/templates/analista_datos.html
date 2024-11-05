@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Analista de Datos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/bigdata.jpg' %}" alt="Analista de Datos" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Analista de Datos</h1>
+                    <p class="card-text">
+                        Profesional con experiencia en la interpretación y análisis de grandes volúmenes de datos. Habilidades en herramientas de análisis y visualización como SQL, Python, y Power BI.
+                    </p>
+                    <p class="text-muted">Ubicación: Bogotá</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: SQL, Python, Power BI</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

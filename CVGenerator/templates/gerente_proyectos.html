@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Gerente de Proyectos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/gerente-proyectos.jpg' %}" alt="Gerente de Proyectos" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Gerente de Proyectos</h1>
+                    <p class="card-text">
+                        Estamos buscando un Gerente de Proyectos con experiencia en Scrum y metodologías ágiles. El candidato ideal deberá tener una gran capacidad de liderazgo y gestión de equipos, así como experiencia en la planificación, ejecución y monitoreo de proyectos complejos.
+                    </p>
+                    <p class="text-muted">Ubicación: Cali</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Scrum, Agile, Gestión de proyectos</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

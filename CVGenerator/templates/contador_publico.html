@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Contador Público{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/contador-publico.png' %}" alt="Contador Público" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Contador Público</h1>
+                    <p class="card-text">
+                        Profesional con experiencia en la contabilidad financiera, auditorías y cumplimiento fiscal, con una sólida comprensión de las normativas contables y fiscales.
+                    </p>
+                    <p class="text-muted">Ubicación: Bogotá</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Contabilidad, Normativa Fiscal, Auditoría</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

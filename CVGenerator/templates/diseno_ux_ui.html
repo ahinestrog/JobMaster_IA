@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Diseñador UX/UI{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/diseno-ux.jpg' %}" alt="Diseñador UX/UI" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Diseñador UX/UI</h1>
+                    <p class="card-text">
+                        Buscamos un diseñador UX/UI con experiencia en crear experiencias de usuario excepcionales. El candidato ideal debe tener un enfoque centrado en el usuario, con habilidades en herramientas como Figma y Adobe XD.
+                    </p>
+                    <p class="text-muted">Ubicación: Medellín</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Figma, Adobe XD, Diseño centrado en el usuario</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

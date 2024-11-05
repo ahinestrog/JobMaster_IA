@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Diseñador Gráfico{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/diseno-grafico.jpg' %}" alt="Diseñador Gráfico" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Diseñador Gráfico</h1>
+                    <p class="card-text">
+                        Buscamos un diseñador gráfico creativo con experiencia en herramientas como Photoshop, Illustrator, y otras herramientas de diseño digital. El candidato ideal será responsable de crear piezas visuales impactantes y funcionales.
+                    </p>
+                    <p class="text-muted">Ubicación: Medellín</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Photoshop, Illustrator, Creatividad</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Administrador de Proyectos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/administrador-proyectos.png' %}" alt="Administrador de Proyectos" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Administrador de Proyectos</h1>
+                    <p class="card-text">
+                        Profesional con experiencia en la gestión de proyectos, habilidades en planificación, ejecución y cierre de proyectos, y capacidad para liderar equipos multidisciplinarios.
+                    </p>
+                    <p class="text-muted">Ubicación: Medellín</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Gestión de Proyectos, Comunicación, Liderazgo</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

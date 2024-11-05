@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Ingeniero de Soporte Técnico{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/ing-soporteTecnico.jpg' %}" alt="Ingeniero de Soporte Técnico" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Ingeniero de Soporte Técnico</h1>
+                    <p class="card-text">
+                        Buscamos un Ingeniero de Soporte Técnico con experiencia en la resolución de problemas técnicos, configuración de redes, mantenimiento de equipos y soporte a usuarios. El candidato debe ser capaz de diagnosticar y solucionar incidencias técnicas de hardware y software.
+                    </p>
+                    <p class="text-muted">Ubicación: Cali</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Redes, Soporte técnico, Resolución de problemas</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

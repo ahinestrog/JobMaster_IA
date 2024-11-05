@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Limpiador(a) Profesional{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/limpiador-profesional.jpg' %}" alt="Limpiador(a) Profesional" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Limpiador(a) Profesional</h1>
+                    <p class="card-text">
+                        Buscamos un limpiador(a) profesional para mantener la limpieza y organización de nuestras instalaciones. El candidato ideal debe tener atención al detalle y ser capaz de trabajar de manera eficiente y autónoma.
+                    </p>
+                    <p class="text-muted">Ubicación: Cali</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Experiencia en limpieza, Atención al detalle</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

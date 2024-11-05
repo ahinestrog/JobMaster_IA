@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Auxiliar Administrativo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/auxiliar-almacen.jpg' %}" alt="Auxiliar Administrativo" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Auxiliar Administrativo</h1>
+                    <p class="card-text">
+                        Responsable de las tareas administrativas y de apoyo en la oficina, como el manejo de archivos, atención telefónica, y asistencia en la organización de actividades.
+                    </p>
+                    <p class="text-muted">Ubicación: Medellín</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Organización, Manejo de inventario, Trabajo en equipo</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

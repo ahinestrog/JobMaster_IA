@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Abogado Corporativo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/abogado-corporativo.jpg' %}" alt="Abogado Corporativo" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Abogado Corporativo</h1>
+                    <p class="card-text">
+                        Abogado con experiencia en derecho corporativo, con habilidades en la redacción de contratos, asesoría en fusiones y adquisiciones, y en la creación de estructuras corporativas.
+                    </p>
+                    <p class="text-muted">Ubicación: Bogotá</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Derecho Corporativo, Negociación, Cumplimiento</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

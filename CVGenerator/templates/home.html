@@ -1,77 +1,323 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
-<!--This is the html file that displays the form to file an appointment-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!--This are style functions created to modify certain coumns in the form-->
+    <title>JobMaster + IA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXhW+ALEwIH" crossorigin="anonymous">
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            background: #f7f7f7 !important;
+            background: #f4f8fb;
         }
-        .bg-gradient-linear {
-            background: linear-gradient(to left, #ffffff, #e7e6e6);
-            height: 100vh;
+        .search-section {
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            padding: 40px 0;
         }
-        .bg-form {
-            background: linear-gradient(to right, #d9ecf2, #ceebec);
+        .job-sections {
+            margin-top: 30px;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: #000;
+        }
+        .job-card {
+            transition: box-shadow .3s;
+            padding: 30px;
+        }
+        .job-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .carousel-img {
+            max-height: 3000px;
+            width: auto;
+            margin-bottom: 15px;
         }
     </style>
 </head>
-<!--This class used in body is one of the created in style, where displays a background with a gradient-->
-<body class="bg-gradient-linear">
-<!--This is the form that will be displayed to the user to fill the appointment-->
-    <div class="container border border-dark d-flex justify-content-center allign-items-center allign-middle mt-4 bg-form"  style="width: 100vh; height: 93vh; border-radius: 15px;">
-        <form class="row g-0 " method="POST">
-            <!--This is the token that is used to validate the sesion of the user-->
-            {% csrf_token %}
-            <div class="col-12 mt-5">
-                <h1 class="text-center">Fill the information below</h1>
-            </div>
-            <!--This is an input for the name of the user-->
-            <div class="col-12  mt-5">
-                <input type="text" class="form-control" placeholder="Name" name="name" required>
-            </div>
-            <!--This is an input for the email of the user-->
-            <div class="col-12 ">
-                <input type="email" class="form-control" placeholder="Email" name="email" required>
-            </div>
-            <!--This is an input for the phone of the user-->
-            <div class="col-12">
-                <input type="text" class="form-control" placeholder="Phone" name="phone" required>
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" placeholder="Address" name="address" required>
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" placeholder="Education (optional)" name="education">
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" placeholder="Experience (optional)" name="experience">
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" placeholder="Languages" name="languages" required>
-            </div>
-            <div class="col-12" >
-                <input type="text" class="form-control" placeholder="Prompt" name="prompt" style="resize: vertical;" required>
-            </div>
+<body>
 
-            <div class="col-12 text-center" > 
-                <input type="submit" class="btn btn-success" style="width: 100px; height: 50px;" value="Submit"> 
+<div class="container">
+    <header class="d-flex justify-content-between align-items-center py-3">
+        <h1 class="text-primary">Job Master + IA</h1>
+        <div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger me-2">LogOut</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Iniciar sesión</a>
+                <a href="{% url 'register' %}" class="btn btn-primary">Crear cuenta</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <section class="search-section text-center">
+        <h2 class="fw-bold text-dark mb-3">Encuentra la vacante ideal para ti</h2>
+        <form class="d-flex justify-content-center">
+            <input type="text" class="form-control w-50 me-2" placeholder="Buscar por ciudad, cargo o empresa">
+            <button type="submit" class="btn btn-dark">Buscar</button>
+        </form>
+    </section>
+
+    <section class="job-sections">
+        <h3 class="text-center text-primary mt-4">Vacantes destacadas</h3>
+        <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card job-card mx-auto" style="max-width: 1000px;">
+                        <img src="{% static 'images/back-end-developer.png' %}" alt="Vacante 1" class="carousel-img">
+                        <h5>Vacante 1: Desarrollador Backend</h5>
+                        <p>Requisitos: Node.js, Express, MongoDB</p>
+                        <a href="{% url 'desarrollador_backend' %}">
+                            <button class="btn btn-outline-primary w-100">Ver más</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card job-card mx-auto" style="max-width: 1000px;">
+                        <img src="{% static 'images/diseno-ux.jpg' %}" alt="Vacante 2" class="carousel-img">
+                        <h5>Vacante 2: Diseñador UX/UI</h5>
+                        <p>Requisitos: Figma, Adobe XD, Diseño centrado en el usuario</p>
+                        <a href="{% url 'diseno_ux_ui' %}">
+                            <button class="btn btn-outline-primary w-100">Ver más</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card job-card mx-auto" style="max-width: 1000px;">
+                        <img src="{% static 'images/bigdata.jpg' %}" alt="Vacante 3" class="carousel-img">
+                        <h5>Vacante 3: Analista de Datos</h5>
+                        <p>Requisitos: SQL, Python, Tableau</p>
+                        <a href="{% url 'analista_datos' %}">
+                            <button class="btn btn-outline-primary w-100">Ver más</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card job-card mx-auto" style="max-width: 1000px;">
+                        <img src="{% static 'images/devops.png' %}" alt="Vacante 4" class="carousel-img">
+                        <h5>Vacante 4: Ingeniero DevOps</h5>
+                        <p>Requisitos: AWS, Docker, Kubernetes</p>
+                        <a href="{% url 'ingeniero_devops' %}">
+                            <button class="btn btn-outline-primary w-100">Ver más</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card job-card mx-auto" style="max-width: 1000px;">
+                        <img src="{% static 'images/gerente-proyectos.jpg' %}" alt="Vacante 5" class="carousel-img">
+                        <h5>Vacante 5: Gerente de Proyectos</h5>
+                        <p>Requisitos: Scrum, Agile, Gestión de proyectos</p>
+                        <a href="{% url 'gerente_proyectos' %}">
+                            <button class="btn btn-outline-primary w-100">Ver más</button>
+                        </a>
+                    </div>
+                </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </section>
 
-            <a href="{% url 'download_cv' %}" class="btn btn-primary" style="width: 100px; height: 55px;">Descargar CV</a>
+    <section class="featured-jobs mt-5">
+        <h3 class="text-center text-primary">Todas Nuestras Vacantes</h3>
+        <div class="row mt-4">
+            <div class="container">
+                <div class="row d-flex flex-wrap">
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/desarrollador-fullstack.jpg' %}" alt="Desarrollador Full Stack" class="img-fluid mb-3">
+                            <h5>Desarrollador Full Stack</h5>
+                            <p class="text-muted">Empresa XYZ | Medellín</p>
+                            <p>Requerimientos: HTML, CSS, JavaScript, Python</p>
+                            <a href="{% url 'desarrollador_full_stack' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/administrador-proyectos.png' %}" alt="Administrador de Proyectos" class="img-fluid mb-3">
+                            <h5>Administrador de Proyectos</h5>
+                            <p class="text-muted">Gestión Proactiva | Medellín</p>
+                            <p>Requerimientos: Gestión de Proyectos, Comunicación, Liderazgo</p>
+                            <a href="{% url 'administrador_proyectos' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/abogado-corporativo.jpg' %}" alt="Abogado Corporativo" class="img-fluid mb-3">
+                            <h5>Abogado Corporativo</h5>
+                            <p class="text-muted">Legal Consultores | Bogotá</p>
+                            <p>Requerimientos: Derecho Corporativo, Negociación, Cumplimiento</p>
+                            <a href="{% url 'abogado_corporativo' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/limpiador-profesional.jpg' %}" alt="Limpiador(a) Profesional" class="img-fluid mb-3">
+                            <h5>Limpiador(a) Profesional</h5>
+                            <p class="text-muted">Servicios Limpios | Cali</p>
+                            <p>Requerimientos: Experiencia en limpieza, Atención al detalle</p>
+                            <a href="{% url 'limpiador_profesional' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/back-end-developer.png' %}" alt="Desarrollador Backend" class="img-fluid mb-3">
+                            <h5>Desarrollador Backend</h5>
+                            <p class="text-muted">Tech Solutions | Bogotá</p>
+                            <p>Requerimientos: Node.js, Express, MongoDB</p>
+                            <a href="{% url 'desarrollador_backend' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/asistente-administrativo.jpg' %}" alt="Asistente Administrativo" class="img-fluid mb-3">
+                            <h5>Asistente Administrativo</h5>
+                            <p class="text-muted">Compañía de Ventas 789 | Medellín</p>
+                            <p>Requerimientos: Organización, Manejo de Office, Atención al cliente</p>
+                            <a href="{% url 'asistente_administrativo' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/gerente-proyectos.jpg' %}" alt="Gerente de Proyectos" class="img-fluid mb-3">
+                            <h5>Gerente de Proyectos</h5>
+                            <p class="text-muted">Empresa 123 | Cali</p>
+                            <p>Requerimientos: Scrum, Agile, Gestión de proyectos</p>
+                            <a href="{% url 'gerente_proyectos' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/contador-publico.png' %}" alt="Contador Público" class="img-fluid mb-3">
+                            <h5>Contador Público</h5>
+                            <p class="text-muted">Finanzas Inteligentes | Bogotá</p>
+                            <p>Requerimientos: Contabilidad, Normativa Fiscal, Auditoría</p>
+                            <a href="{% url 'contador_publico' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/devops.png' %}" alt="Ingeniero DevOps" class="img-fluid mb-3">
+                            <h5>Ingeniero DevOps</h5>
+                            <p class="text-muted">Empresa XYZ | Medellín</p>
+                            <p>Requerimientos: AWS, Docker, Kubernetes</p>
+                            <a href="{% url 'ingeniero_devops' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/recepcionista.jpg' %}" alt="Recepcionista" class="img-fluid mb-3">
+                            <h5>Recepcionista</h5>
+                            <p class="text-muted">Hotel Elegante | Cali</p>
+                            <p>Requerimientos: Atención al cliente, Comunicación, Manejo de software de reservas</p>
+                            <a href="{% url 'recepcionista' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/diseno-grafico.jpg' %}" alt="Diseñador Gráfico" class="img-fluid mb-3">
+                            <h5>Diseñador Gráfico</h5>
+                            <p class="text-muted">Creativos Digitales | Medellín</p>
+                            <p>Requerimientos: Photoshop, Illustrator, Creatividad</p>
+                            <a href="{% url 'diseno_grafico' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/bigdata.jpg' %}" alt="Analista de Datos" class="img-fluid mb-3">
+                            <h5>Analista de Datos</h5>
+                            <p class="text-muted">Data Solutions | Bogotá</p>
+                            <p>Requerimientos: Análisis de Datos, Excel, SQL</p>
+                            <a href="{% url 'analista_datos' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/analista-recursos-humanos.jpg' %}" alt="Analista de Recursos Humanos" class="img-fluid mb-3">
+                            <h5>Analista de Recursos Humanos</h5>
+                            <p class="text-muted">Talento Humano | Medellín</p>
+                            <p>Requerimientos: Selección de personal, Manejo de conflictos, Comunicación</p>
+                            <a href="{% url 'analista_recursos_humanos' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/ingeniero-soporte-tecnico.jpg' %}" alt="Ingeniero de Soporte Técnico" class="img-fluid mb-3">
+                            <h5>Ingeniero de Soporte Técnico</h5>
+                            <p class="text-muted">Soporte 24/7 | Medellín</p>
+                            <p>Requerimientos: Resolución de problemas, Conocimientos técnicos, Atención al cliente</p>
+                            <a href="{% url 'ingeniero_soporte_tecnico' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/auxiliar-almacen.jpg' %}" alt="Auxiliar de Almacén" class="img-fluid mb-3">
+                            <h5>Auxiliar de Almacén</h5>
+                            <p class="text-muted">Logística Eficiente | Bogotá</p>
+                            <p>Requerimientos: Organización, Manejo de inventarios, Trabajo en equipo</p>
+                            <a href="{% url 'auxiliar_almacen' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card job-card p-3 h-100">
+                            <img src="{% static 'images/diseno-ux.jpg' %}" alt="Diseñador UX/UI" class="img-fluid mb-3">
+                            <h5>Diseñador UX/UI</h5>
+                            <p class="text-muted">Innovación Creativa | Medellín</p>
+                            <p>Requerimientos: Diseño UX, Prototipado, Investigación de usuarios</p>
+                            <a href="{% url 'diseno_ux_ui' %}">
+                                <button class="btn btn-outline-primary w-100">Ver más</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-nfyTQ5xGviDF7cS3r4pq5vE8Fls9G2UVsbRbHGSLdQsc/sT0U7V3hlI06NKYkDSH" crossorigin="anonymous"></script>
 </body>
 </html>
 
-{% endblock content %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Desarrollador Backend{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="{% static 'images/back-end-developer.png' %}" alt="Desarrollador Backend" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title">Desarrollador Backend</h1>
+                    <p class="card-text">
+                        Buscamos un desarrollador backend con experiencia en Node.js, Express y bases de datos MongoDB. Ideal para trabajar en la creación de APIs robustas y escalables.
+                    </p>
+                    <p class="text-muted">Ubicación: Bogotá</p>
+                    <p class="text-muted">Edad: </p>
+                    <p class="text-muted">Requerimientos: Node.js, Express, MongoDB</p>
+                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
