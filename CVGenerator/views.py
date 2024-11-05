@@ -52,6 +52,18 @@ def download_docx(request):
         raise Http404("El archivo solicitado no existe")
 
 def home(request):
+    query = request.GET.get('query', '')
+
+    all_jobs = [
+        {'title': 'Desarrollador Web', 'company': 'Empresa A', 'location': 'Medellín'},
+        {'title': 'Diseñador Gráfico', 'company': 'Empresa B', 'location': 'Bogotá'},
+    ]
+
+    if query:
+        jobs = [job for job in all_jobs if query.lower() in job['title'].lower()]
+    else:
+        jobs = all_jobs
+
     if request.method == 'POST':
         form = CVForm(request.POST)
         if form.is_valid():
@@ -59,7 +71,7 @@ def home(request):
             create_file(form)
         else:
             print(form.errors)
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'jobs': jobs})
 
 def register(request):
     form = CreateUserForm()
