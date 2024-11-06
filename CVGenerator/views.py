@@ -12,13 +12,11 @@ import pypandoc
 # Create your views here.
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
-    # Obtiene la clave API de las variables de entorno
+    load_dotenv('api_keys_2.env')
     api_key = os.getenv('openai_apikey')
     
-    # Configura la clave API en el cliente de OpenAI
     openai.api_key = api_key
     
-    # Crear la solicitud de chat completions
     messages = [{"role": "user", "content": prompt}]
     response = openai.ChatCompletion.create(
         model=model,
