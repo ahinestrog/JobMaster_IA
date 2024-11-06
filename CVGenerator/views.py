@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import FileResponse, Http404
 from django.contrib.auth import authenticate, login, logout
 from .models import CV
-from .forms import CreateUserForm, CVForm
+from .forms import CreateUserForm, CVForm, CVInfoForm
 from django.contrib import messages
 import os
 import openai
@@ -28,7 +28,7 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
     return response.choices[0].message["content"]
 
 def create_file(form):
-    prompt = f"Crea un texto en formato markdown lo mas detallado posible que contenga una hoja de vida para conseguir un trabajo muy importante, que sea muy detallada y que contenga lo siguiente: Mi nombre: {form.cleaned_data['name']}, {form.cleaned_data['prompt']}, {form.cleaned_data['education']}, estos idiomas que hablo {form.cleaned_data['languages']}, esta experiencia que tengo {form.cleaned_data['experience']}, con este telefono {form.cleaned_data['phone']} y este correo {form.cleaned_data['email']}"
+    prompt = f"Crea un texto en formato markdown lo mas detallado posible que contenga una hoja de vida para un trabajo con el título {form.cleaned_data['jobTitle']}, la hoja de vida debe estar orientada a esta descripcion: {form.cleaned_data['description']}, la vacante tiene estos {form.cleaned_data['requirements']} , la hoja de vida debe ser muy detallada y debe contener: Mi nombre: {form.cleaned_data['fullName']},  mi correo {form.cleaned_data['email']} y esta experiencia que tengo en los requisitos para el trabajo {form.cleaned_data['experienceYears']}"
     response = get_completion(prompt)
 
     with open('CVGenerator/media/CV/files/CV.md', 'w') as file:
@@ -99,49 +99,161 @@ def logoutUser(request):
 
 
 def desarrollador_full_stack(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'desarrollador_full_stack.html')
 
 def administrador_proyectos(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'administrador_proyectos.html')
 
 def abogado_corporativo(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'abogado_corporativo.html')
 
 def limpiador_profesional(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'limpiador_profesional.html')
 
 def desarrollador_backend(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'desarrollador_backend.html')
 
 def asistente_administrativo(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'asistente_administrativo.html')
 
 def gerente_proyectos(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'gerente_proyectos.html')
 
 def contador_publico(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'contador_publico.html')
 
 def ingeniero_devops(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'ingeniero_devops.html')
 
 def recepcionista(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'recepcionista.html')
 
 def diseno_grafico(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'diseno_grafico.html')
 
 def analista_datos(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'analista_datos.html')
 
 def analista_recursos_humanos(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'analista_recursos_humanos.html')
 
 def ingeniero_soporte_tecnico(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'ingeniero_soporte_tecnico.html')
 
 def auxiliar_almacen(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'auxiliar_almacen.html')
 
 def diseno_ux_ui(request):
+    if request.method == 'POST':
+        form = CVInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            create_file(form)
+        else:
+            print(form.errors)
     return render(request, 'diseno_ux_ui.html')

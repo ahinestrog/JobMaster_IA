@@ -11,14 +11,51 @@
             <div class="card">
                 <img src="{% static 'images/ing-soporteTecnico.jpg' %}" alt="Ingeniero de Soporte Técnico" class="card-img-top">
                 <div class="card-body">
-                    <h1 class="card-title">Ingeniero de Soporte Técnico</h1>
-                    <p class="card-text">
-                        Buscamos un Ingeniero de Soporte Técnico con experiencia en la resolución de problemas técnicos, configuración de redes, mantenimiento de equipos y soporte a usuarios. El candidato debe ser capaz de diagnosticar y solucionar incidencias técnicas de hardware y software.
-                    </p>
-                    <p class="text-muted">Ubicación: Cali</p>
-                    <p class="text-muted">Edad: </p>
-                    <p class="text-muted">Requerimientos: Redes, Soporte técnico, Resolución de problemas</p>
-                    <a href="#" class="btn btn-primary">Aplicar Ahora</a>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <h1 class="card-title" name="jobTitle">Ingeniero de Soporte Técnico</h1>
+                        <p class="card-text" name="description">
+                            Buscamos un Ingeniero de Soporte Técnico con experiencia en la resolución de problemas técnicos, configuración de redes, mantenimiento de equipos y soporte a usuarios. El candidato debe ser capaz de diagnosticar y solucionar incidencias técnicas de hardware y software.
+                        </p>
+                        <p class="text-muted">Ubicación: Cali</p>
+                        <p class="text-muted">Edad: </p>
+                        <p class="text-muted" name="requirements">Requerimientos: Redes, Soporte técnico, Resolución de problemas</p>
+                        
+                        
+                        <div class="container-fluid border rounded border-dark p-4">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Nombre completo" name="fullName">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Correo electrónico" name="email">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-md-4">
+                                    <label for="experienceYears" class="fw-italic fs-5" style="margin-left: 80px; margin-bottom: 5px;">Experiencia</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="experienceYears" class="form-select" style="margin-left: -50px;">
+                                        <option selected>Selecciona tu experiencia</option>
+                                        <option value="Menos de un año">Menos de un año</option>
+                                        <option value="1 a 3 años">1 a 3 años</option>
+                                        <option value="4 a 6 años">4 a 6 años</option>
+                                        <option value="7 a 10 años">7 a 10 años</option>
+                                        <option value="Más de 10 años">Más de 10 años</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col text-center">
+                                    <input type="submit" class="btn btn-primary" value="Aplicar Ahora">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
                 </div>
             </div>
         </div>
