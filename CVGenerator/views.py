@@ -13,7 +13,8 @@ import pypandoc
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     # Obtiene la clave API de las variables de entorno
-    api_key = os.getenv('openai_apikey')
+    load_dotenv('api_keys.env')
+    api_key = os.getenv('api_key_3_2')
     
     # Configura la clave API en el cliente de OpenAI
     openai.api_key = api_key
