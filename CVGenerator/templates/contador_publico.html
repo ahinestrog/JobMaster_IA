@@ -13,14 +13,17 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        <h1 class="card-title" name="jobTitle">Contador Público</h1>
-                        <p class="card-text" name="description">
+                        <h1 class="card-title">Contador Público</h1>
+                        <p class="card-text">
                             Profesional con experiencia en la contabilidad financiera, auditorías y cumplimiento fiscal, con una sólida comprensión de las normativas contables y fiscales.
                         </p>
                         <p class="text-muted">Ubicación: Bogotá</p>
                         <p class="text-muted">Edad: </p>
-                        <p class="text-muted" name="requirements">Requerimientos: Contabilidad, Normativa Fiscal, Auditoría</p>
+                        <p class="text-muted">Requerimientos: Contabilidad, Normativa Fiscal, Auditoría</p>
                         
+                        <input type="hidden" name="jobTitle" value="Contador Público">
+                        <input type="hidden" name="description" value="Profesional con experiencia en la contabilidad financiera, auditorías y cumplimiento fiscal, con una sólida comprensión de las normativas contables y fiscales.">
+                        <input type="hidden" name="requirements" value="Requerimientos: Contabilidad, Normativa Fiscal, Auditoría">
                         
                         <div class="container-fluid border rounded border-dark p-4">
                             <div class="row mb-3">

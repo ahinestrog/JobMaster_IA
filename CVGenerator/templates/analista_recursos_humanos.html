@@ -13,15 +13,18 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        <h1 class="card-title" name="jobTitle">Analista de Recursos Humanos</h1>
-                        <p class="card-text" name="description">
+                        <h1 class="card-title">Analista de Recursos Humanos</h1>
+                        <p class="card-text">
                             Profesional enfocado en la gestión y desarrollo del talento humano, con experiencia en selección de personal, evaluaciones de desempeño y gestión de beneficios.
                         </p>
                         <p class="text-muted">Ubicación: Bogotá</p>
                         <p class="text-muted">Edad: </p>
-                        <p class="text-muted" name="requirements">Requerimientos: Selección de personal, Evaluaciones, Gestión del talento</p>
+                        <p class="text-muted">Requerimientos: Selección de personal, Evaluaciones, Gestión del talento</p>
                         
-                        
+                        <input type="hidden" name="jobTitle" value="Analista de Recursos Humanos">
+                        <input type="hidden" name="description" value="Profesional enfocado en la gestión y desarrollo del talento humano, con experiencia en selección de personal, evaluaciones de desempeño y gestión de beneficios.">
+                        <input type="hidden" name="requirements" value="Requerimientos: Selección de personal, Evaluaciones, Gestión del talento">
+
                         <div class="container-fluid border rounded border-dark p-4">
                             <div class="row mb-3">
                                 <div class="col-md-6">

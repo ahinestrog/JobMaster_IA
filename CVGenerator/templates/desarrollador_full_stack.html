@@ -13,14 +13,17 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        <h1 class="card-title" name="jobTitle">Desarrollador Full Stack</h1>
-                        <p class="card-text" name="description">
+                        <h1 class="card-title">Desarrollador Full Stack</h1>
+                        <p class="card-text">
                             Estamos buscando un desarrollador full stack con experiencia en HTML, CSS, JavaScript, y Python. El candidato ideal trabajará en el desarrollo de aplicaciones web de alta calidad, tanto en el frontend como en el backend.
                         </p>
                         <p class="text-muted">Ubicación: Medellín</p>
                         <p class="text-muted">Edad: </p>
-                        <p class="text-muted" name="requirements">Requerimientos: HTML, CSS, JavaScript, Python</p>
+                        <p class="text-muted">Requerimientos: HTML, CSS, JavaScript, Python</p>
                         
+                        <input type="hidden" name="jobTitle" value="Desarrollador Full Stack">
+                        <input type="hidden" name="description" value="Estamos buscando un desarrollador full stack con experiencia en HTML, CSS, JavaScript, y Python. El candidato ideal trabajará en el desarrollo de aplicaciones web de alta calidad, tanto en el frontend como en el backend.">
+                        <input type="hidden" name="requirements" value="Requerimientos: HTML, CSS, JavaScript, Python">
                         
                         <div class="container-fluid border rounded border-dark p-4">
                             <div class="row mb-3">
