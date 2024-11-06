@@ -13,15 +13,18 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        <h1 class="card-title" name="jobTitle">Auxiliar Administrativo</h1>
-                        <p class="card-text" name="description">
+                        <h1 class="card-title">Auxiliar Administrativo</h1>
+                        <p class="card-text">
                             Responsable de las tareas administrativas y de apoyo en la oficina, como el manejo de archivos, atención telefónica, y asistencia en la organización de actividades.
                         </p>
                         <p class="text-muted">Ubicación: Medellín</p>
                         <p class="text-muted">Edad: </p>
-                        <p class="text-muted" name="requirements">Requerimientos: Organización, Manejo de inventario, Trabajo en equipo</p>
+                        <p class="text-muted"></p>Requerimientos: Organización, Manejo de inventario, Trabajo en equipo</p>
                         
-                        
+                        <input type="hidden" name="jobTitle" value="Auxiliar Administrativo">
+                        <input type="hidden" name="description" value="Responsable de las tareas administrativas y de apoyo en la oficina, como el manejo de archivos, atención telefónica, y asistencia en la organización de actividades.">
+                        <input type="hidden" name="requirements" value="Requerimientos: Organización, Manejo de inventario, Trabajo en equipo">
+
                         <div class="container-fluid border rounded border-dark p-4">
                             <div class="row mb-3">
                                 <div class="col-md-6">
