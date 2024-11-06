@@ -13,13 +13,17 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        <h1 class="card-title" name="jobTitle">Recepcionista</h1>
-                        <p class="card-text" name="description">
+                        <h1 class="card-title">Recepcionista</h1>
+                        <p class="card-text">
                             Estamos buscando un recepcionista para brindar atención al cliente y apoyo administrativo en nuestras instalaciones. El candidato ideal debe tener una excelente actitud de servicio y capacidad para gestionar tareas administrativas.
                         </p>
                         <p class="text-muted">Ubicación: Cali</p>
                         <p class="text-muted">Edad: </p>
-                        <p class="text-muted" name="requirements">Requerimientos: Atención al cliente, Comunicación, Manejo de software de reservas</p>
+                        <p class="text-muted">Requerimientos: Atención al cliente, Comunicación, Manejo de software de reservas</p>
+
+                        <input type="hidden" name="job_title" value="Recepcionista">
+                        <input type="hidden" name="description" value="Estamos buscando un recepcionista para brindar atención al cliente y apoyo administrativo en nuestras instalaciones. El candidato ideal debe tener una excelente actitud de servicio y capacidad para gestionar tareas administrativas.">
+                        <input type="hidden" name="requirements" value="Requerimientos: Atención al cliente, Comunicación, Manejo de software de reservas">
                         
                         
                         <div class="container-fluid border rounded border-dark p-4">
